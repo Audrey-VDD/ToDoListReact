@@ -1,0 +1,185 @@
+.login{
+  border-radius: 50% 20% / 10% 40%;
+  border: thick double rgb(3, 97, 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 50px 70px 50px;
+  margin: 100px 400px 20px 400px;
+  color: white;
+  background-color: black;
+  background-image: url(./assets/toDoList.jpg);
+  background-position: right 0em bottom 3em;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.formLogin{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.inputLogin{
+  margin-left: 2%;
+  background-color: rgb(0 0 0 / 0.5);
+  color: #fff;
+}
+.formSubmit{
+  padding: 5px;
+  background: none;
+  color: white;
+  border: thick double rgb(3, 97, 3);
+}
+.formSubmit:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+.btnInscription{
+  background: none;
+  color: white;
+  margin: 50px 5px 5px 5px;
+}
+.btnInscription:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+.addTask{
+  border-radius: 50% 20% / 10% 40%;
+  border: thick double rgb(3, 97, 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 50px 65px 50px;
+  margin: 100px 400px 20px 400px;
+  color: white;
+  background-color: black;
+  background-image: url(./assets/toDoList.jpg);
+  background-position: right 0em bottom 2em;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.addInput{
+  margin-left: 2%;
+  background-color: rgb(0 0 0 / 0.5);
+  color: #fff;
+}
+.inscription{
+  border-radius: 50% 20% / 10% 40%;
+  border: thick double rgb(3, 97, 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 50px 65px 50px;
+  margin: 100px 400px 20px 400px;
+  color: white;
+  background-color: black;
+  background-image: url(./assets/toDoList.jpg);
+  background-position: right 0em bottom 2em;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.formInscription{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.inscriptionInput{
+  margin-left: 2%;
+  background-color: rgb(0 0 0 / 0.5);
+  color: #fff;
+}
+.taskList{
+  margin: 5px 5px 7px 5px;
+}
+.tabTask{
+  display: flex;
+  gap: 5%;
+  justify-content: space-evenly;
+  background-color: #000000;
+  border: solid 3px rgb(153, 82, 1);
+  color: #fff;
+  background-image: url(./assets/toDoList.jpg);
+  opacity: 0.90;
+  background-position: left bottom top;
+  background-size: 200px;
+  background-repeat: no-repeat;
+}
+#recycler{
+  margin-top: 10%;
+  width: 25px;
+}
+#recycler:hover{
+  cursor: pointer;
+}
+#imgModify{
+  margin-top: 5%;
+  width: 25px; 
+}
+#imgModify:hover{
+  cursor: pointer; 
+}
+#divAddTask{
+  margin-top: 10%;
+}
+#btnAddTask{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.427);
+  color: #fff;
+  border-radius: 5%;
+  margin-top: 25%;
+  margin-right: 5%;
+}
+#modifTask{
+  border-radius: 50% 20% / 10% 40%;
+  border: thick double rgb(3, 97, 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 50px 70px 50px;
+  margin: 100px 400px 20px 400px;
+  color: white;
+  background-color: black;
+  background-image: url(./assets/toDoList.jpg);
+  background-position: right 0em bottom 3em;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.updateTask{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.taskSubmit{
+  background: none;
+  color: white;
+  margin: 50px 5px 5px 5px;
+}
+.taskSubmit:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+.inputUpdateTask{
+  margin-left: 2%;
+  background-color: rgb(0 0 0 / 0.5);
+  color: #fff;
+}
+.taskListInProgress{
+  list-style: none;
+  border: #04a00eb8;
+  padding: 15px 0px 15px 15px;
+  border-top-style: groove;
+}
+.taskListToDo{
+  list-style: none;
+  border: #a06404b8;
+  padding: 15px 0px 15px 15px;
+  border-top-style: groove;
+}
+.taskListDone{
+  list-style: none;
+  border: rgba(255, 255, 0, 0.505);
+  padding: 15px 0px 15px 15px;
+  border-top-style: groove;
+}
