@@ -9,7 +9,8 @@ const AddTask = () => {
     const [task, setTask] = useState({});
     const navigate = useNavigate();
 
-    const token = localStorage.getItem('token');
+    // Pas besoin de la constante token parce qu'on l'a set dans isValid
+    // const token = localStorage.getItem('token');
 
     // fonction handleChange sur chaque champ pour qu'il prenne en compte ce qu'on y écrit
     const handleChange = (e) => {

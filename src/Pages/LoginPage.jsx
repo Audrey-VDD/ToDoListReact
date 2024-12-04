@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, React } from "react";
+import { useState, useEffect, React, useContext } from "react";
 import UserService from "../Services/UserService";
+import AuthContext from "../Context/AuthContext";
+import AuthService from "../Services/AuthService";
 
 // On rajoute le token
 const LoginPage = () => {
@@ -9,6 +11,7 @@ const LoginPage = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     // On aurait pu mettre const [user, setUser] = useState({});
+    const { setIsAuthentified } = useContext(AuthContext);
 
 
     const handleSubmit = async (e) => {
@@ -18,17 +21,23 @@ const LoginPage = () => {
             // On aurait pu déclarer une constante exemple id = {mail, password}
             const response = await UserService.login({ mail, password });
             console.log(response.data.token);
-            // setToken(response.data.token);
+
+
+            // Pour appeler le token partour, on utilise un hook react : useContext dans un nouveau dossier dans src
             const token = response.data.token
-
-
-
-            // Envoi l'id dans la page suivante
+            // Envoi le token dans le local storage
             localStorage.setItem('token', token);
             // Token généré au moment de la connexion
+
+            AuthService.setAxiosToken();
+
+            // indique que sur toutes les pages, on est autorisés
+            setIsAuthentified(true);
+
             alert("Connexion réussie");
             // A la place de l'alerte, on peut mettre un navigate 
             navigate('/allTasks');
+
         } catch (error) {
             console.log(error);
             alert("erreur de connexion");
@@ -36,6 +45,8 @@ const LoginPage = () => {
 
         }
     }
+
+    AuthService.isValid();
 
     return <>
         <div className="login">

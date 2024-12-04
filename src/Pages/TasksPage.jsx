@@ -1,16 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import TaskService from "../Services/TaskService";
 import { toast } from "react-toastify";
 import recycler from "../assets/recycler.png";
 import modify from "../assets/modify.png";
 import { useNavigate, useParams } from "react-router-dom";
+import AuthContext from "../Context/AuthContext";
+import AuthService from "../Services/AuthService";
 
 
 const TasksPage = () => {
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
-    console.log(token);
-     
+    // Va chercher l'authentification
+    const { isAuthentified, user } = useContext(AuthContext)
+    console.log(user.role);
+
+    // const token = localStorage.getItem('token');
+    // console.log(token);
+
     const [tasks, setTasks] = useState([]);
     // Constante des tasks en fonction de leurs états
     const [taskState1, setTaskState1] = useState([]);
@@ -24,24 +30,27 @@ const TasksPage = () => {
             // Met à jour tasks en fonction des data, puis en fonction des états
             setTasks(response.data)
             console.log(response.data);
-            
+
             setTaskState1(response.data.filter((task) => task.nameState === "toDo"));
             setTaskState2(response.data.filter((task) => task.nameState === "done"));
             setTaskState3(response.data.filter((task) => task.nameState === "inProgress"));
-            console.log(taskState2);
-            
+            // console.log(taskState2);
+
         } catch (error) {
             console.log(error);
         }
     };
-    
+
+
+
+
     // Permet de supprimer une task par son id
     const handleSupp = async (idTask) => {
         console.log(idTask);
         try {
             // const response = await TaskService.deleteTask(idTask);
             await TaskService.deleteTask(idTask);
-            
+
             // Je rappelle le fetch pour mettre à jour les infos
             fetchTasks();
         } catch (error) {
@@ -98,14 +107,23 @@ const TasksPage = () => {
         fetchTasks();
     }, []);
 
+    AuthService.isValid();
+
 
     return <>
 
-       
+        {/* Si isAuthentified est vrai, vous êtes connecté sinon, afficher "vous n'êtes pas connecté" */}
+        {/* {isAuthentified ? "Vous êtes connecté" : "Vous n'êtes pas connecté"}
+        {user.id && (<p> Identifiant : {user.id}</p>)} */}
+
+
         <div className="tabTask">
+
             <div id="divAddTask">
                 <button id="btnAddTask" onClick={() => { navigate('/add') }}>Ajouter une tâche</button>
             </div>
+
+            <h3>{user.role && (<p>Rôle : {user.role}</p>)}</h3>
 
 
             <div id="divTaskToDo">
@@ -114,23 +132,23 @@ const TasksPage = () => {
                 <ul className="taskList">
 
                     {taskState3.map((task, index) => {
-                        return <li 
-                        className="taskListInProgress" 
-                        key={task.idTask}
-                        // indique que c'est glissable
-                        draggable
-                        // donne un index au début du drag
-                        onDragStart={() => (dragtaskState3.current = index)}
-                        // donne une position quand c'est draggé
-                        onDragEnter={() => (draggedOvertaskState3.current = index)}
-                        // réorganise après le drag grâce à handleSort
-                        onDragEnd={handleSortState3}
-                        // bloque rafraichissement de la page
-                        onDragOver={(e) => e.preventDefault()}
+                        return <li
+                            className="taskListInProgress"
+                            key={task.idTask}
+                            // indique que c'est glissable
+                            draggable
+                            // donne un index au début du drag
+                            onDragStart={() => (dragtaskState3.current = index)}
+                            // donne une position quand c'est draggé
+                            onDragEnter={() => (draggedOvertaskState3.current = index)}
+                            // réorganise après le drag grâce à handleSort
+                            onDragEnd={handleSortState3}
+                            // bloque rafraichissement de la page
+                            onDragOver={(e) => e.preventDefault()}
                         >
                             {task.nameTask}
                             <br />
-                            <img src={modify} id="imgModify" alt="pictureModify" onClick={() => { navigate('/updateTask/'+task.idTask) }} />
+                            <img src={modify} id="imgModify" alt="pictureModify" onClick={() => { navigate('/updateTask/' + task.idTask) }} />
                             <img src={recycler} id="recycler" alt="pictureRecycler" onClick={() => handleSupp(task.idTask)} />
                         </li>
                     })}
@@ -143,15 +161,15 @@ const TasksPage = () => {
                 <ul className="taskList">
                     {taskState1.map((task, index) => {
                         return <li className="taskListToDo" key={task.idTask}
-                        draggable
-                        onDragStart={() => (dragtaskState1.current = index)}
-                        onDragEnter={() => (draggedOvertaskState1.current = index)}
-                        onDragEnd={handleSortState1}
-                        onDragOver={(e) => e.preventDefault()}
+                            draggable
+                            onDragStart={() => (dragtaskState1.current = index)}
+                            onDragEnter={() => (draggedOvertaskState1.current = index)}
+                            onDragEnd={handleSortState1}
+                            onDragOver={(e) => e.preventDefault()}
                         >
                             {task.nameTask}
                             <br />
-                            <img src={modify} id="imgModify" alt="pictureModify" onClick={() => { navigate('/updateTask/'+task.idTask) }}  />
+                            <img src={modify} id="imgModify" alt="pictureModify" onClick={() => { navigate('/updateTask/' + task.idTask) }} />
                             <img src={recycler} id="recycler" alt="pictureRecycler" onClick={() => handleSupp(task.idTask)} />
                         </li>
                     })}
@@ -162,14 +180,14 @@ const TasksPage = () => {
                 <ul className="taskList">
                     {taskState2.map((task, index) => {
                         return <li className="taskListDone" key={task.idTask}
-                        draggable
-                        onDragStart={() => (dragtaskState2.current = index)}
-                        onDragEnter={() => (draggedOvertaskState2.current = index)}
-                        onDragEnd={handleSortState2}
-                        onDragOver={(e) => e.preventDefault()}
+                            draggable
+                            onDragStart={() => (dragtaskState2.current = index)}
+                            onDragEnter={() => (draggedOvertaskState2.current = index)}
+                            onDragEnd={handleSortState2}
+                            onDragOver={(e) => e.preventDefault()}
                         >{task.nameTask}
                             <br />
-                            <img src={modify} id="imgModify" alt="pictureModify" onClick={() => { navigate('/updateTask/'+task.idTask) }}  />
+                            <img src={modify} id="imgModify" alt="pictureModify" onClick={() => { navigate('/updateTask/' + task.idTask) }} />
                             <img src={recycler} id="recycler" alt="pictureRecycler" onClick={() => handleSupp(task.idTask)} />
                         </li>
                     })}
