@@ -183,3 +183,51 @@
   padding: 15px 0px 15px 15px;
   border-top-style: groove;
 }
+.titleAdmin{
+  background-color: #000000;
+  border: solid 3px rgb(153, 82, 1);
+  color: #fff;
+  opacity: 0.90;
+  margin-bottom: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 5px 5px 5px;
+}
+.btnAdmin{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.427);
+  color: #fff;
+  border: solid 1.5px rgb(153, 82, 1);
+  border-radius: 5%;
+  margin-bottom: 1%;
+  padding: 2px 2px 2px 2px;
+}
+.btnAdmin:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+.usersList{
+  list-style: none;
+  border: #a06404b8;
+  padding: 15px 0px 15px 15px;
+  border-top-style: groove;
+}
+.usersListing{
+  background-color: #000000;
+  border: solid 3px rgb(153, 82, 1);
+  color: #fff;
+  opacity: 0.90;
+  margin-bottom: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 5px 5px 5px;
+}
+.eachUser{
+  list-style: none;
+  border: #a06404b8;
+  padding: 15px 0px 15px 15px;
+  border-top-style: groove;
+}

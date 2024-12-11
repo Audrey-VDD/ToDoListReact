@@ -38,7 +38,7 @@ function isValid() {
     if (token) {
         // Véirfier que le token est valide
         const decodedToken = jwtDecode(token);
-        console.log(decodedToken);
+        // console.log(decodedToken);
         // on multiplie par mille pour que ce soit en milisecondes
         if (decodedToken.exp * 1000 < new Date().getTime()) {
             logout();

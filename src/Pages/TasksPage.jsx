@@ -29,7 +29,7 @@ const TasksPage = () => {
             const response = await TaskService.getTasksByIdUser()
             // Met à jour tasks en fonction des data, puis en fonction des états
             setTasks(response.data)
-            console.log(response.data);
+            // console.log(response.data);
 
             setTaskState1(response.data.filter((task) => task.nameState === "toDo"));
             setTaskState2(response.data.filter((task) => task.nameState === "done"));
@@ -116,6 +116,11 @@ const TasksPage = () => {
         {/* {isAuthentified ? "Vous êtes connecté" : "Vous n'êtes pas connecté"}
         {user.id && (<p> Identifiant : {user.id}</p>)} */}
 
+        <div className="titleAdmin">
+            {user.role === "admin" && <h3>Accès utilisateur</h3>}
+            {user.role === "admin" && <bouton className="btnAdmin" onClick={() => { navigate('/users')}}>Utilisateurs</bouton>}
+
+        </div>
 
         <div className="tabTask">
 

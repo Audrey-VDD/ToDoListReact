@@ -11,6 +11,7 @@ import { useState } from 'react';
 import AuthContext from './Context/AuthContext';
 import AuthService from './Services/AuthService';
 import RouteSecu from './Component/RouteSecu';
+import UsersPage from './Pages/UsersPage';
 
 function App() {
   // Par défaut, je ne suis pas connecté
@@ -32,6 +33,7 @@ function App() {
             <Route path='/allTasks' element={<TasksPage />}></Route>
             <Route path='/add' element={<AddTask></AddTask>}></Route>
             <Route path='/updateTask/:idTask' element={<UpdatePage />}></Route>
+            <Route path='/users' element={<UsersPage></UsersPage>}></Route>
           </Route>
 
         </Routes>
